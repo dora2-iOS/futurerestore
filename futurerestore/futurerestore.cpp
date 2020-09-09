@@ -1337,8 +1337,10 @@ uint64_t futurerestore::getEcidFromSCAB(const char* scab, size_t scabSize){
         if (*(uint8_t*)elem.buf() == 0x81) {
             uint64_t ret = 0;
             for (int i=0; i<elem.payloadSize(); i++) {
+                int val = 7;
+                val = val - i;
                 ret <<=8;
-                ret |= ((uint8_t*)elem.payload())[i];
+                ret |= ((uint8_t*)elem.payload())[val];
             }
             return ret;
         }
